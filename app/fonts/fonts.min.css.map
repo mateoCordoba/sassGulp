@@ -1,0 +1,1 @@
+{"version":3,"file":"fonts.min.css","sources":["fonts.scss"],"sourcesContent":["@import url('https://fonts.googleapis.com/css?family=Righteous|Pacifico&display=swap');\n\n$fuente-titulos: 'Righteous', cursive;\n\n$fuente-subtitulos: 'Pacifico', cursive;\n\n"],"names":[],"mappings":"AAAA,OAAO,CAAC,8EAAI"}

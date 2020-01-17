@@ -1,0 +1,160 @@
+
+
+@mixin borderBox{
+    -moz-box-sizing: border-box;
+    box-sizing:border-box;
+}
+
+@mixin clearfix {
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+}
+
+@mixin tablet {
+    @media only screen and (min-width:#{$tablet}) and (max-width:#{$desktop}){
+        @content;
+    }
+}
+
+@mixin desktop {
+    // as{i se declara un media query en SASS
+    @media only screen and(min-width:#{$desktop}){
+        @content;
+
+    }
+}
+
+@mixin phone{
+    @media only screen and(min-width:#{$phone}) and (max-width:#{$tablet}){
+        @content;       
+    }
+}
+
+
+@mixin hover{
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.192);
+        width: 40px;
+        height: 40px;
+        text-decoration: double;
+    }
+}
+
+
+
+
+@mixin backgroundImg($img, $height: 100vh, $bgPos:center center){
+    background: linear-gradient(to bottom, black,rgba(0,0,0,0) ), url($img);
+    background-position: $bgPos;
+    height: $height;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+@mixin glassContent($color:black, $bgColor:rgba(0, 0, 0, 0.479)){    
+    padding:0;
+    background-color: $bgColor;
+    color: $color;    
+}
+
+@mixin hoverText($fontSize){
+    &:hover{
+        transition: all .2s ease;
+        font-size:$fontSize;
+        color:lighten(purple,30);
+    
+
+    }    
+}
+
+@mixin table{
+    table{
+        width: 100%;
+        border-collapse:collapse;
+        font-size:1.1rem;
+        >caption{
+            font-size: 1.8rem;
+            background-color:lighten(purple,20);
+            border-top-left-radius: 17px;
+            border-top-right-radius: 17px;
+
+
+        }
+        >thead{
+            
+
+            text-align: left;
+            padding-left: 5%;
+           
+        }
+        >thead,tbody{
+            >tr{
+                padding: 5px; 
+              
+
+                
+            }               
+        }
+
+        >tbody{
+            >tr{
+               
+                background-color: lighten(black,10);
+                &:nth-child(odd){
+                    background-color: lighten(black, 20);
+                }
+                &:hover{
+                    background-color:lighten(purple,10);
+                }
+                &:first-child{
+                    border-top:1px dotted purple;
+
+                }
+                >td{
+                    padding:10px;
+                    border-bottom:1px dotted purple;
+                   
+                }
+
+            }
+        }
+      
+    
+    
+    }
+
+}
+
+@mixin gridImgs($cantidad,$margin){
+    width:((100% -(($cantidad - 1) * $margin))/$cantidad);
+    &:nth-child(n){
+        margin-right: $margin;
+        margin-bottom: $margin;
+
+    }
+    &:nth-child(#{$cantidad}n + 1){
+        margin-right:0;
+        margin-bottom:0;
+    }
+
+}
+
+@mixin borderRadius-all($border){
+    border-radius:$border;
+}
+
+@mixin borderRadius-top-lr($border){
+    border-top-right-radius:$border;
+    border-top-left-radius: $border;;
+}
+
+@mixin borderRadius-bottom-lr($border){
+    border-bottom-right-radius:$border;
+    border-bottom-left-radius: $border;
+    
+}
+

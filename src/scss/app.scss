@@ -1,0 +1,322 @@
+@import 'base/variables.scss';
+@import 'base/mixins.scss';
+@import '../fonts/fonts.scss';
+
+a{
+    color:$black;
+}
+
+body {
+    background-color: $black;
+    color: $black;
+
+}
+
+
+
+body ul{
+    background: local;
+}
+
+p{
+    font-family: $fuente-titulos;
+}
+
+h1, h2, h3, h4{
+    color: $color-subtitulos;
+    font-family: $fuente-subtitulos;
+}
+
+.btn{
+
+    display: block;
+    font-weight:bold;
+    @include borderRadius-all(20px);
+    background-color: purple;
+    text-align:center;
+    color:white;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:2% ;
+
+    &:hover{
+        transition: all ease;
+        background-color:lighten(purple,10);
+        color:white;
+
+    }
+    @include desktop{
+        display: inline-block;
+        margin:1%
+
+    }
+    
+
+
+
+
+
+}
+
+.container{
+    margin:0 auto;
+    max-width: 80%;
+    margin-right: 27%;
+
+   
+
+    @include tablet{
+        background-color: rgba(0, 0, 0,0.685);
+        margin-left: 10%;
+        margin-right: 15%;       
+    }
+
+    @include desktop{
+        background-color: rgba(0, 0, 0,0.685);
+        margin-left: 10%;
+        margin-right: 15%;        
+    }
+
+    @include phone{
+        background-color: rgba(0, 0, 0,0.685);
+        margin-left: 10%;
+        margin-right: 10%;      
+    }
+
+   
+}
+
+.navegacion{
+    h2{
+        margin-right: 10%;
+        color:white;
+        display: inline;
+        
+        // el
+        @include hoverText(xx-large);
+        
+        @include tablet{
+        }
+
+        @include phone{
+            margin-left:40%;
+            display: block;
+            
+
+        }
+    }
+    nav{
+        @include phone{
+            margin-left: 25%;
+        }
+        display: inline;
+
+        a{
+            @include hoverText(x-large);
+            color: white;
+            font-size: larger;
+            text-decoration:none;
+            
+
+        }
+    }
+}
+
+
+.london{
+    @include backgroundImg('../img/img02.jpg', 600px, top center);
+    .contenido{
+        h1{
+            @include hoverText(2.5rem);
+            color: white;
+        }
+        @include glassContent(white, rgba(0, 0, 0, 0.481));
+        // glassContent recibe dos parámetros, el color de la fuente y el color del fonto
+    }
+
+
+   
+}
+
+.estacion{
+    @include backgroundImg('../img/img01.jpg', 600px, top center);
+    @include glassContent(null,rgba(255, 255, 255, 0.199));
+    
+    display: table;
+    width:100%;
+    position: relative;
+    .contenido{
+        display:table-cell;
+        vertical-align: bottom;
+
+        h1{
+            @include hoverText(2.5rem);
+
+            background-color:rgba(0, 0, 0, 0.493);
+            color:white;
+        }
+
+    }
+}
+
+#contenido-principal{
+
+
+    h2{
+        @include hoverText(xx-large);
+        margin-top: 0%;
+        margin-bottom: 0%;
+        @include glassContent(white, rgba(0, 0, 0, 0.685));        
+    }
+
+    h3{
+        @include hoverText(x-large);
+        
+        color: $color-subtitulos;
+    }    
+    
+
+    .noticias{
+        @include glassContent(white, rgba(0, 0, 0, 0.685));
+        @include phone{
+            img{
+                width:100%;
+                height:200px;
+            }
+        }
+
+        .noticia{
+            border-top: 2px dotted $color-borde-noticia;
+            box-sizing: border-box;
+            img{
+                float:left;
+                margin-right: 2%;
+            }
+
+
+            
+
+        }
+        
+        
+    }
+    
+
+} 
+
+#servicios{
+    color:white;
+    h2{
+        @include hoverText(xx-large);
+
+    }
+
+    ul {
+        list-style: none;
+        h3{
+        @include hoverText(x-large);
+
+    }
+}
+}
+
+aside{
+    @include table;
+    @include glassContent(white, rgba(0, 0, 0, 0.685));
+
+    @include desktop{
+        margin-top:4%;
+        float: right;
+        width: 39%;
+
+    }
+
+    
+    @include tablet{
+        margin-top:6%;
+        float: right;
+        width: 39%;
+    }
+    
+    @include phone{
+        padding-top: 5%;
+    }
+}
+
+.galeria{
+
+    @include clearfix;
+    li.imagen{
+        float: left;
+        list-style: none;
+        @include desktop{
+            @include gridImgs(4,1%);
+        }
+        @include tablet{
+            @include gridImgs(3,1%);            
+        }
+        @include phone{
+            @include gridImgs(2,1%);          
+        }
+
+        img{
+            display:block;
+            max-width: 100%;
+            @include borderRadius-all(10px);
+        }
+
+    }
+}
+
+.row{
+    @include  clearfix;
+    @include tablet{
+        margin:0 -1em;
+    }
+    @include desktop{
+        margin:0 -1em;
+    }
+    @include phone{
+        margin:0 -1em;
+    }
+    
+}
+
+[class*='col']{
+    @include borderBox;
+    float:left;
+    padding:1em;
+    width:100%;
+
+}
+@include desktop{
+    @for $i from 1 through $col-num{
+        .col-#{$i}{
+            width:100% / $col-num * $i;
+
+        }
+        
+         
+    }
+}
+@include tablet{
+    @for $i from 1 through $col-num{
+        .col-#{$i}{
+            width:100% / $col-num * $i;
+
+        }
+        
+         
+    }
+}
+
+.btn-servicio{
+    @extend .btn;
+    font-size: 0.8rem;
+    font-family: $fuente-titulos ;
+    &:hover{
+        transition:all 0.3s ease;
+        font-size: 1rem;
+
+    }
+}

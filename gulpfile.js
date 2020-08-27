@@ -9,6 +9,8 @@ var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 var autoPrefixer = require('gulp-autoprefixer');
+var imagemin = require("gulp-imagemin");
+
 
 var browserToFix = [
     '> 1%',
@@ -121,8 +123,14 @@ gulp.task('fonts', async ()=>{
     //return triggerPlumber(fontsSRC, fontsURL);
         
 });
-gulp.task('img', async ()=>{
-    return triggerPlumber(imgSRC, imgURL);    
+gulp.task("img", async()=>{
+    gulp.src(imgSRC)            
+    .pipe(imagemin({
+        progessive: true,
+        interlaced: true
+    }))
+    .pipe(gulp.dest(imgURL))
+    .pipe(notify({message: "Imagemin task finalizada"}))
 });
 
 gulp.task('html', async ()=>{
